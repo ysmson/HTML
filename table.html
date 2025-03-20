@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回饋表單</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html,
+        body {
+            height: 100%;
+            /* 確保頁面可以捲動 */
+            margin: 0;
+        }
+
+        body {
+            background-image: url("./img/building.jpg");
+            background-size: cover;
+            /* 確保背景影像適應螢幕 */
+            background-position: center;
+            background-repeat: no-repeat;
+            display: block;
+            /* 修改為 block 來避免 flex 版面影響滾動 */
+            padding: 0;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            /* 設定表單最大寬度 */
+            margin: 0 auto;
+            /* 表單置中 */
+            overflow: auto;
+            /* 確保表單內容溢位時顯示捲軸 */
+        }
+
+        fieldset {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 18px;
+            width: 100%;
+            padding: 0;
+            /* 去掉legend的padding */
+            margin: 0;
+            /* 去掉legend的margin */
+        }
+
+        h1 {
+            margin-top: 0;
+            /* 去掉h1的顶部margin */
+            margin-bottom: 10px;
+            /* 可以根据需要调整底部的margin */
+        }
+
+        label {
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        input[type="submit"],
+        input[type="reset"],
+        button {
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        input[type="text"]:valid,
+        input[type="tel"]:valid,
+        input[type="email"]:valid {
+            background-color: lightgreen;
+        }
+
+        input[type="text"]:invalid,
+        input[type="tel"]:invalid,
+        input[type="email"]:invalid {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend></legend>
+            <h1>基本資料</h1>
+            <label for="userName">姓名(英文): </label>
+            <input type="text" id="userName" pattern="^[\u4E00-\u9FA5]{2,5}$">
+            格式: 請輸入2-5個中文字
+            <br><br>
+            <label for="userPhone">手機號碼: </label>
+            <input type="tel" id="userPhone" pattern="09\d{2}-?\d{3}-?\d{3}">
+            格式: 09xx-xxx-xxx
+            <br><br>
+            <label for="userEmail">Email: </label>
+            <input type="email" id="userEmail" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+            格式: example@gmail.com
+
+            <br><br>
+
+            職業 :
+            <input name="job" type="radio" id="student">
+            <label for="student">學生</label>
+
+            <input name="job" type="radio" id="OL">
+            <label for="OL">上班族</label>
+
+            <input name="job" type="radio" id="service">
+            <label for="service">服務業</label>
+
+            <input name="job" type="radio" id="food">
+            <label for="food">餐飲業</label>
+
+            <input name="job" type="radio" id="other">
+            <label for="other">其他</label>
+
+            <br><br>
+
+            年齡 :
+            <input name="age" type="radio" id="20d">
+            <label for="20d">20 歲以下</label>
+            <input name="age" type="radio" id="20-30">
+            <label for="20-30">20-30 歲</label>
+            <input name="age" type="radio" id="30-40">
+            <label for="30-40">30-40 歲</label>
+
+            <input name="age" type="radio" id="40-50">
+            <label for="40-50">40-50 歲</label>
+
+            <input name="age" type="radio" id="50u">
+            <label for="50u">50 歲以上</label>
+
+            <br><br>
+
+            學歷 :
+            <input name="degree" type="radio" id="elementary">
+            <label for="elementary">國小</label>
+
+            <input name="degree" type="radio" id="junior">
+            <label for="junior">國中</label>
+
+            <input name="degree" type="radio" id="senior">
+            <label for="senior">高中</label>
+
+            <input name="degree" type="radio" id="college">
+            <label for="college">大學</label>
+
+            <input name="degree" type="radio" id="special">
+            <label for="special">專科</label>
+
+            <input name="degree" type="radio" id="master">
+            <label for="master">碩士</label>
+
+            <input name="degree" type="radio" id="phd">
+            <label for="phd">博士</label>
+
+            <br>
+
+            <h1 style="text-align: center;">給我們的建議</h1>
+            <textarea rows="10" cols="30" id="comment"></textarea>
+            <br>
+
+            <button type="submit" onclick="showMsg()">送出</button>
+            <button type="button" onclick="confirmReset()">清除</button>
+        </fieldset>
+    </form>
+
+    <script>
+        function showMsg() {
+            alert("已收到回覆，感謝您的回饋！");
+        }
+        function confirmReset() {
+            var confirmAction = confirm("您確定要清除所有輸入內容嗎?");
+            if (confirmAction) {
+                document.querySelector("form").reset();  // 如果使用者確認，清空表單
+            }
+        }
+    </script>
+    
+</body>
+
+</html>
